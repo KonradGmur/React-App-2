@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-// import Word from './Word';
+import Word from './Word';
 
 class App extends Component {
   state = {
     words: []
   }
+  
   render() {
+    const words = this.state.words.map(word => (
+      <Word key={word.id} english={word.en} polish={word.pl} />
+    ))
     return (
-      <div>
-        App fetch
-      </div>
+      <ul>
+        {words}
+      </ul>
     );
   }
 }
