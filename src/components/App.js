@@ -3,7 +3,9 @@ import './App.css';
 // import Word from './Word';
 
 class App extends Component {
-  state = {}
+  state = {
+    words: []
+  }
   render() {
     return (
       <div>
