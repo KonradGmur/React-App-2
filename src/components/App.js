@@ -4,18 +4,22 @@ import Word from './Word';
 
 class App extends Component {
   state = {
-    words: []
+    words: [],
+    isLoaded: false
   }
 
   componentDidMount() {
+    // setTimeout(this.fetchData, 3000)
     fetch('data/words.json')
       .then(response => response.json())
       .then(data => {
         this.setState({
-          words: data.words
+          words: data.words,
+          isLoaded: true
         })
       })
   }
+
 
   render() {
     const words = this.state.words.map(word => (
@@ -23,7 +27,7 @@ class App extends Component {
     ))
     return (
       <ul>
-        {words}
+        {this.state.isLoaded ? words : "Wczytuję dane"}
       </ul>
     );
   }
